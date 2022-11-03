@@ -1,31 +1,35 @@
 import React from "react";
 import { StyleSheet, View, Text } from "react-native";
+import { LIGHT_THEME } from "../../constants/color";
 import Subtitle from '../UI/Subtitle';
+import CardTitle from "../UI/CardTitle";
+
+const cardStyle = {
+    borderRadius: '12px',
+    backgroundColor: LIGHT_THEME.cardBg,
+    width: '100%',
+    marginTop: '5%',
+    padding: '5%'
+};
 
 const style = StyleSheet.create({
-    fullBar: {
-        borderRadius: '12px',
-        backgroundColor: 'rgba(0, 0, 0, .4)',
-        width: '100%',
-        minHeight: '25%',
-        marginTop: '5%'
+    1: {
+        ...cardStyle,
+        minHeight: '20%'
     },
-    circleBarHalf: {
-        borderRadius: '12px',
-        backgroundColor: 'rgba(0, 0, 0, .4)',
-        width: '48%',
-        minHeight: '25%',
-        marginTop: '5%'
+    2: {
+        ...cardStyle
     }
 })
 
 const CardLayout = (props) => {
     return (
-        <View style={{width: '100%', marginTop: '5%'}}>
+        <View style={{width: '100%', marginTop: '10%'}}>
             <Subtitle title={props.title} />
 
-            <View style={style[props.type]}>
-                <Text>Some text</Text>
+            <View style={style[props.data.type]}>
+                <CardTitle title={props.data.cardTitle} color={LIGHT_THEME.red} />
+
             </View>
         </View>
     )

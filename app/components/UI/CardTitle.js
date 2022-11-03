@@ -2,12 +2,12 @@ import React from 'react';
 import { Text } from 'react-native';
 import { LIGHT_THEME } from '../../constants/color';
 
-const Subtitle = (props) => {
+const CardTitle = (props) => {
     return (
         <Text style={{
             textAlign: 'left',
-            fontSize: '22px',
-            color: LIGHT_THEME.textColor,
+            fontSize: '16px',
+            color: props.color,
             fontWeight: '400'
         }}>
             {props.title}
@@ -15,4 +15,4 @@ const Subtitle = (props) => {
     )
 };  
 
-export default Subtitle;
+export default CardTitle;
