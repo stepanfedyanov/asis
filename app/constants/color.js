@@ -5,6 +5,7 @@ export const GRADIENTS = {
 export const LIGHT_THEME = {
     bgColor: '#FFFFFF',
     textColor: '#000000',
+    lightGray: '#D9D9D9',
     cardBg: '#F2F2F7',
     red: '#FF3B30'
 };

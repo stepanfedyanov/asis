@@ -1,14 +1,13 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { LIGHT_THEME } from '../../constants/color';
+import { GLOBAL_CSS } from '../../constants/styles';
 
 const Subtitle = (props) => {
     return (
         <Text style={{
-            textAlign: 'left',
-            fontSize: '22px',
-            color: LIGHT_THEME.textColor,
-            fontWeight: '400'
+            ...GLOBAL_CSS.title2Regular,
+            color: LIGHT_THEME.textColor
         }}>
             {props.title}
         </Text>

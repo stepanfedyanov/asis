@@ -1,29 +1,21 @@
 import React, { useState } from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { LIGHT_THEME, DARK_THEME } from '../constants/color';
-import CardLayout from '../components/Layout/CardLayout';
 import PageContent from '../components/Layout/PageContent';
 import PageTop from './main/PageTop';
-
-// const [OSCOLOR, osColorChange] = useState(Appearance.getColorScheme());
-
-// Appearance.addChangeListener(function () {
-//     osColorChange(Appearance.getColorScheme());
-// });
+import { Card1 } from '../components/UI/cards/cards';
 
 const Main = () => {
     return (
         <View style={styles.container}>
             <PageTop />
             <PageContent>
-                <CardLayout title="Общая оценка вашей активности за неделю" data={
+                <Card1 title="Общая оценка вашей активности за неделю" data={
                     {
-                        type: 1,
                         cardTitle: 'Общая оценка активности',
-
+                        chart: [4000, 2500, 3000, 4000, 1500, 3000, 3500]
                     }
                 } />
-                {/* <CardLayout title="Сегодня" /> */}
             </PageContent>
         </View>
     )

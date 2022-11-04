@@ -1,14 +1,13 @@
 import React from 'react';
 import { Text } from 'react-native';
 import { LIGHT_THEME } from '../../constants/color';
+import { GLOBAL_CSS } from '../../constants/styles';
 
 const CardTitle = (props) => {
     return (
         <Text style={{
-            textAlign: 'left',
-            fontSize: '16px',
+            ...GLOBAL_CSS.calloutRegular,
             color: props.color,
-            fontWeight: '400'
         }}>
             {props.title}
         </Text>
