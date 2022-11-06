@@ -15,4 +15,25 @@ const averageArray = (array) => {
     }
 };
 
-export {arraySum, averageArray}
+const endingWord = (type, num) => {
+    switch (type) {
+        case 'calories':
+            if (num === 1) {
+                return 'калория';
+            } else if (num >= 2 && num <= 4) {
+                return 'калории';
+            } else {
+                return 'калорий';
+            }
+        case 'steps':
+            if (num === 1) {
+                return 'шаг';
+            } else if (num >= 2 && num <= 4) {
+                return 'шага';
+            } else {
+                return 'шагов';
+            }
+    }
+}
+
+export {arraySum, averageArray, endingWord}

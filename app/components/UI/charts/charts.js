@@ -2,6 +2,9 @@ import React from "react";
 import { View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { LIGHT_THEME } from "../../../constants/color";
+import { averageArray } from "../../../common/functions";
+import { GLOBAL_CSS } from "../../../constants/styles";
+import { endingWord } from "../../../common/functions";
 
 const styles = StyleSheet.create({
     topContainer: {
@@ -28,9 +31,27 @@ const styles = StyleSheet.create({
     },
     label: {
         position: 'absolute',
-        bottom: '-40%',
-        left: '20%'
+        bottom: '0%',
+        zIndex: '1', 
+        left: '20%',
+        
         // transform: 'translateX(-50%)'
+    },
+    averageContainer: {
+        position: 'absolute',
+        zIndex: '1',
+        width: '100%',
+        bottom: '0%',
+        left: '0%',
+        borderTopColor: LIGHT_THEME.darkGray,
+        borderTopWidth: '3%',
+    },
+    averageText: {
+        ...GLOBAL_CSS.caption2Bold,
+        color: LIGHT_THEME.gray,
+        position: 'absolute',
+        top: '-40%',
+        right: '0%'
     }
 });
 
@@ -41,15 +62,23 @@ const settingsLabels = {
 const BarChart = (props) => {
     return (
         <View style={styles.container}>
+            <View style={
+                {
+                    ...styles.averageContainer, 
+                    height: averageArray(props.data) / Math.max(...props.data) * 100 + '%' 
+                }
+            }>
+                <Text style={styles.averageText}>{averageArray(props.data)}</Text>
+            </View>
             {
                 props.data.map((e, i) => 
-                    <View style={styles.topContainer}>
-                        <Text style={styles.label}>{settingsLabels[props.labelType][i]}</Text>
-                        <View key={i} 
-                            style={
+                    <View key={i} style={styles.topContainer}>
+                        <Text style={{...styles.label, color: e === Math.max(...props.data) ? '#fff' : LIGHT_THEME.darkGray}}>{settingsLabels[props.labelType][i]}</Text>
+                        <View style={
                                 {
                                     ...styles.bar, 
-                                    height: `${e / Math.max(...props.data) * 100}%`
+                                    height: `${e / Math.max(...props.data) * 100}%`,
+                                    backgroundColor: e === Math.max(...props.data) ? props.color : LIGHT_THEME.lightGray
                                 }
                         }></View>
                     </View>
@@ -59,4 +88,18 @@ const BarChart = (props) => {
     )
 };
 
-export {BarChart}
+const HorizontalBarChart = (props) => {
+    return (
+        <View style={styles.container}>
+            <Text style={{marginRight: '5%'}}>
+                <Text style={{...GLOBAL_CSS.headlineBold, marginRight: '1%', color: LIGHT_THEME[props.data[0].group]}}>{props.data[0].value} </Text>
+                <Text style={{...GLOBAL_CSS.headlineBold, color: LIGHT_THEME.gray}}>{endingWord(props.data[0].type, props.data[0].value)}</Text>
+            </Text>
+
+            <View style={{width: '100%', height: '10%', backgroundColor: LIGHT_THEME[props.data[0].group]}}></View>
+            
+        </View>
+    )
+};
+
+export {BarChart, HorizontalBarChart}

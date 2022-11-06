@@ -8,6 +8,7 @@ const CardTitle = (props) => {
         <Text style={{
             ...GLOBAL_CSS.calloutRegular,
             color: props.color,
+            marginBottom: '5%'
         }}>
             {props.title}
         </Text>

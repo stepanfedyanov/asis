@@ -8,6 +8,10 @@ export const GLOBAL_CSS = {
         marginTop: '5%',
         padding: '5%'
     },
+    headlineBold: {
+        fontWeight: '600',
+        fontSize: '17px'
+    },
     title1Bold: {
         fontWeight: '700',
         fontSize: '28px',
@@ -20,6 +24,10 @@ export const GLOBAL_CSS = {
     calloutRegular: {
         fontWeight: '400',
         fontSize: '16px'
+    },
+    caption2Bold: {
+        fontWeight: '600',
+        fontSize: '11px',
     },
     footnoteBold: {
         fontWeight: '600',
