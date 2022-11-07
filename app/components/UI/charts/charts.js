@@ -52,6 +52,14 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '-40%',
         right: '0%'
+    },
+    horizontalBar: {
+        flex: 1, 
+        justifyContent: 'center', 
+        paddingLeft: 7, 
+        height: 35, 
+        marginTop: 8, 
+        borderRadius: 5, 
     }
 });
 
@@ -90,14 +98,29 @@ const BarChart = (props) => {
 
 const HorizontalBarChart = (props) => {
     return (
-        <View style={styles.container}>
-            <Text style={{marginRight: '5%'}}>
-                <Text style={{...GLOBAL_CSS.headlineBold, marginRight: '1%', color: LIGHT_THEME[props.data[0].group]}}>{props.data[0].value} </Text>
-                <Text style={{...GLOBAL_CSS.headlineBold, color: LIGHT_THEME.gray}}>{endingWord(props.data[0].type, props.data[0].value)}</Text>
+        <View style={{width: '100%'}}>
+            <Text>
+                <Text style={{...GLOBAL_CSS.headlineBold, marginRight: '1%'}}>{props.data[0].value} </Text>
+                <Text style={{...GLOBAL_CSS.headlineBold, color: LIGHT_THEME.gray}}>
+                    {endingWord(props.data[0].type, props.data[0].value)}
+                </Text>
             </Text>
 
-            <View style={{width: '100%', height: '10%', backgroundColor: LIGHT_THEME[props.data[0].group]}}></View>
+            <View style={{...styles.horizontalBar, width: '100%', backgroundColor: props.color}}>
+                <Text style={{color: '#FFF', ...GLOBAL_CSS.caption1}}>Сегодня</Text>
+            </View>
             
+            <Text style={{marginTop: 10}}>
+                <Text style={{...GLOBAL_CSS.headlineBold, marginRight: '1%'}}>{props.data[1].value} </Text>
+                <Text style={{...GLOBAL_CSS.headlineBold, color: LIGHT_THEME.gray}}>
+                    {endingWord(props.data[0].type, props.data[0].value)}
+                </Text>
+            </Text>
+
+            <View style={{...styles.horizontalBar, width: `${props.data[1].value / props.data[0].value * 100}%`, backgroundColor: LIGHT_THEME.lightGray}}>
+                <Text style={{color: LIGHT_THEME.gray, ...GLOBAL_CSS.caption1Regular}}>Обычно</Text>
+            </View>
+
         </View>
     )
 };

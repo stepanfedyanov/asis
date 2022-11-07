@@ -1,15 +1,21 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, ScrollView, FlatList, Button } from 'react-native';
 import { LIGHT_THEME, DARK_THEME } from '../constants/color';
 import PageContent from '../components/Layout/PageContent';
 import PageTop from './main/PageTop';
 import { Card1, Card2, Card3 } from '../components/UI/cards/cards';
+import CategoryTitle from '../components/CategoryTitle';
+import { NewsCategory, Article } from '../components/UI/news';
 
-const Main = () => {
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+const Main = ({navigation}) => {
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <PageTop />
             <PageContent>
+                <CategoryTitle title="Аналитика" />
                 <Card1 title="Общая оценка вашей активности за неделю" data={
                     {
                         cardTitle: 'Общая оценка активности',
@@ -55,8 +61,21 @@ const Main = () => {
                         ]
                     }
                 } />
+
+                <CategoryTitle title="Рекомендации" />
+
+                {/* <NewsCategory title="Сон" text="На прошлой неделе продолжительность вашего сна уменьшилась на 20%. Рекомендую прочитать статью и выполнить упражнения из рекомендации.">
+                    <Article />
+                </NewsCategory> */}
+
+                <NewsCategory title="Сон" text="На прошлой неделе продолжительность вашего сна уменьшилась на 20%. Рекомендую прочитать статью и выполнить упражнения из рекомендации.">
+                    
+                    <Article navigation={navigation} />
+                    
+                </NewsCategory>
+
             </PageContent>
-        </View>
+        </ScrollView>
     )
 };  
 
@@ -66,7 +85,7 @@ const styles = StyleSheet.create({
       paddingLeft: '8%',
       paddingRight: '8%',
       height: '100%',
-      paddingTop: '25%'
+      paddingTop: 30
     }
 });
 

@@ -12,15 +12,15 @@ import { BarChart, HorizontalBarChart } from "../charts/charts";
 const style = StyleSheet.create({
     1: {
         ...GLOBAL_CSS.cardStyle,
-        minHeight: '25%'
+        minHeight: 200
     },
     2: {
         ...GLOBAL_CSS.cardStyle,
-        minHeight: '13%'
+        minHeight: 85
     },
     3: {
         ...GLOBAL_CSS.cardStyle,
-        minHeight: '20%'
+        minHeight: 200
     }
 })
 
@@ -28,11 +28,11 @@ const Card1 = (props) => {
     let title;
 
     if (props.title) { 
-        title = <Subtitle title={props.title} />
+        title = <Subtitle style={GLOBAL_CSS.cardSubtitle} title={props.title} />
     }
 
     return (
-        <View style={{width: '100%', marginTop: '10%'}}>
+        <View style={{width: '100%', marginTop: props.title ? 25 : 5}}>
             {title}
 
             <View style={style[1]}>
@@ -50,11 +50,11 @@ const Card2 = (props) => {
     let title;
 
     if (props.title) { 
-        title = <Subtitle title={props.title} />
+        title = <Subtitle style={GLOBAL_CSS.cardSubtitle} title={props.title} />
     }
 
     return (
-        <View style={{width: '100%', marginTop: '10%'}}>
+        <View style={{width: '100%', marginTop: props.title ? 25 : 5}}>
             {title}
 
             <View style={style[2]}>
@@ -79,11 +79,11 @@ const Card3 = (props) => {
     let title;
 
     if (props.title) { 
-        title = <Subtitle title={props.title} />
+        title = <Subtitle style={GLOBAL_CSS.cardSubtitle} title={props.title} />
     }
 
     return (
-        <View style={{width: '100%', marginTop: '10%'}}>
+        <View style={{width: '100%', marginTop: props.title ? 25 : 5}}>
             {title}
 
             <View style={style[3]}>
