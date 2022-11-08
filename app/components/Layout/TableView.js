@@ -23,7 +23,19 @@ const TableView = (props) => {
     const subtext = props.subtext ? <Text style={{...GLOBAL_CSS.caption1Regular, color: LIGHT_THEME.gray}}>{props.subtext}</Text> : '';
 
     return (
-        <View style={styles.container}>
+        <View onStartShouldSetResponder={
+            () => { 
+                if (props.to) { 
+                    props.to.navigate('data', 
+                    {
+                        screen: 'data_page',
+                        params: {
+                            datatype: props.dataGroup
+                        }
+                    }) 
+                } 
+            } 
+        } style={styles.container}>
             <Ionicons style={{...styles.icon, marginRight: 10}} name={props.icon} size={22} color={LIGHT_THEME[props.dataGroup]} />
             <View>
                 <Text style={GLOBAL_CSS.bodyRegular}>{props.text}</Text>   

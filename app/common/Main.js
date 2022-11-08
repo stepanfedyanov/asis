@@ -71,11 +71,26 @@ const Main = ({navigation}) => {
 
                 <NewsCategory title="Общее" text="Поздравляю! Ваши показатели находятся в норме. Рекомендую ознакомиться с подборкой ниже для улучшения средних показателей">
                     
-                    <Article navigation={navigation} />
+                    <Article navigation={navigation} data={[
+                        {
+                            name: 'ЗОЖ: как стать здоровым',
+                            description: 'Что такое ЗОЖ и так ли он нам нужен? Разбор от РБК',
+                            img: 'https://funfrom.me/image/f3c3f340-64a3-4ccc-ab31-386a07f6aeb9.png',
+                            uri: 'https://www.rbc.ru/life/news/62e253169a7947a362945b24?ysclid=la8ffcc057966601222'
+                        },
+                        {
+                            name: 'Почему сон так важен?',
+                            description: 'Узнайте о том, как сон помогает вам и вашему телу',
+                            img: 'https://fedyanov.agency/img/asis/why-sleep-is-so-important.png',
+                            uri: 'https://www.sleepfoundation.org/sleep-hygiene/what-is-healthy-sleep'
+                        }
+                    ]} />
                     
                 </NewsCategory>
 
             </PageContent>
+
+            <View style={{height: 100}}></View>
         </ScrollView>
     )
 };  

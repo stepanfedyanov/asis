@@ -5,13 +5,18 @@ import Subtitle from "./Subtitle";
 
 const Article = (props) => {
     return (
-        <View onStartShouldSetResponder={() => props.navigation.navigate('browser', {uri: 'https://fedyanov.agency/'})} style={{marginTop: 10, marginBottom: 10, ...GLOBAL_CSS.articleCard}}>
-            <Image source={{uri: 'https://fedyanov.agency/img/asis/why-sleep-is-so-important.png'}} style={{width: '100%', height: 150}} />
-            <View style={{padding: 20}}>
-                <Text style={{...GLOBAL_CSS.title3Bold}}>Почему сон так важен?</Text>
-                <Text style={{...GLOBAL_CSS.bodyRegular, marginTop: 10}}>Узнайте о том, как сон помогает вам и вашему телу</Text>
-            </View>
+        <View>
+            {props.data.map((e, i) => 
+                <View key={i} onStartShouldSetResponder={() => props.navigation.navigate('browser', {uri: e.uri})} style={{marginTop: 10, marginBottom: 10, ...GLOBAL_CSS.articleCard}}>
+                    <Image source={{uri: e.img}} style={{width: '100%', height: 150}} />
+                    <View style={{padding: 20}}>
+                        <Text style={{...GLOBAL_CSS.title3Bold}}>{e.name}</Text>
+                        <Text style={{...GLOBAL_CSS.bodyRegular, marginTop: 10}}>{e.description}</Text>
+                    </View>
+                </View>
+            )}
         </View>
+        
     )
 };
 

@@ -45,6 +45,8 @@ const endingWord = (type, num) => {
             } else {
                 return 'процентов';
             }
+        case 'weight':
+            return 'кг'
     }
 }
 

@@ -19,26 +19,26 @@ const MainScreen = ({navigation}) => {
             <Title title="Ваши данные" />
         
             <DetailedTable name="Активность">
-                <TableView icon="flame" dataGroup="activity" text="Калории" />
-                <TableView icon="bicycle" dataGroup="activity" text="Общие очки активности" />
-                <TableView icon="walk" dataGroup="activity" text="Шаги" />
-                <TableView icon="git-merge" dataGroup="activity" text="Дистанция" />
-                <TableView icon="barbell" dataGroup="activity" text="Тренировки" />
+                <TableView to={navigation} icon="flame" dataGroup="activity" text="Калории" />
+                <TableView to={navigation} icon="bicycle" dataGroup="activity" text="Общие очки активности" />
+                <TableView to={navigation} icon="walk" dataGroup="activity" text="Шаги" />
+                <TableView to={navigation} icon="git-merge" dataGroup="activity" text="Дистанция" />
+                <TableView to={navigation} icon="barbell" dataGroup="activity" text="Тренировки" />
             </DetailedTable>
 
             <DetailedTable name="Тело">
-                <TableView icon="speedometer" dataGroup="body" text="Масса тела" />
-                <TableView icon="stats-chart" dataGroup="body" text="Рост" />
-                <TableView icon="triangle" dataGroup="body" text="ИМТ" />
-                <TableView icon="water" dataGroup="body" text="Другие показатели" />
+                <TableView to={navigation} icon="speedometer" dataGroup="body" text="Масса тела" />
+                <TableView to={navigation} icon="stats-chart" dataGroup="body" text="Рост" />
+                <TableView to={navigation} icon="triangle" dataGroup="body" text="ИМТ" />
+                <TableView to={navigation} icon="water" dataGroup="body" text="Другие показатели" />
             </DetailedTable>
 
             <DetailedTable name="Питание">
-                <TableView icon="restaurant" dataGroup="nutrition" text="Общие показатели" />
+                <TableView to={navigation} icon="restaurant" dataGroup="nutrition" text="Общие показатели" />
             </DetailedTable>
 
             <DetailedTable name="Осознанность">
-                <TableView icon="rose" dataGroup="focus" text="Общие показатели" />
+                <TableView to={navigation} icon="rose" dataGroup="focus" text="Общие показатели" />
             </DetailedTable>
 
             <View style={{height: 150}}></View>
@@ -109,6 +109,52 @@ const DataPage = ({navigation, route}) => {
         } />
         </View>
     }
+
+    if (route.params.datatype === 'body') {
+        cards = <View>
+            <Card2 title="Показатели" data={
+            {
+                cardTitle: 'Сводка',
+                dataType: 'summary',
+                datas: [
+                    {
+                        type: 'body',
+                        group: 'body',
+                        value: '60,3 кг'
+                    },
+                    {
+                        type: 'body',
+                        group: 'body',
+                        value: '11,2% жира'
+                    }
+                ]
+            }
+        } />
+
+        <Button title="Изменить данные" />
+
+        
+
+    <Card3 title="Последние изменения" data={
+            {
+                cardTitle: 'Сравнение последних месяцев',
+                dataType: 'body',
+                datas: [
+                    {
+                        type: 'weight',
+                        label: 'this_month',
+                        value: 60.3
+                    },
+                    {
+                        type: 'weight',
+                        label: 'last_month',
+                        value: 59.8
+                    }
+                ]
+            }
+        } />
+        </View>
+    } 
 
     return (
         <ScrollView style={{...GLOBAL_CSS.screen}}>
