@@ -9,18 +9,19 @@ import { NewsCategory, Article } from '../components/UI/news';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { GLOBAL_CSS } from '../constants/styles';
 
 const Main = ({navigation}) => {
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView style={GLOBAL_CSS.screen}>
             <PageTop />
             <PageContent>
                 <CategoryTitle title="Аналитика" />
-                <Card1 title="Общая оценка вашей активности за неделю" data={
+                <Card1 navigation={navigation} title="Ваша активность на этой неделе" data={
                     {
                         cardTitle: 'Общая оценка активности',
                         dataType: 'activity',
-                        chart: [4000, 2500, 3000, 4500, 1500, 3000, 3500]
+                        chart: [70, 120, 30]
                     }
                 } />
 
@@ -37,7 +38,7 @@ const Main = ({navigation}) => {
                             {
                                 type: 'steps',
                                 group: 'steps',
-                                value: 10500
+                                value: 4576
                             }
                         ]
                     }
@@ -50,13 +51,13 @@ const Main = ({navigation}) => {
                         datas: [
                             {
                                 type: 'steps',
-                                group: 'today',
-                                value: 10500
+                                label: 'today',
+                                value: 4576
                             },
                             {
                                 type: 'steps',
-                                group: 'last',
-                                value: 5600
+                                label: 'last',
+                                value: 8560
                             }
                         ]
                     }
@@ -68,7 +69,7 @@ const Main = ({navigation}) => {
                     <Article />
                 </NewsCategory> */}
 
-                <NewsCategory title="Сон" text="На прошлой неделе продолжительность вашего сна уменьшилась на 20%. Рекомендую прочитать статью и выполнить упражнения из рекомендации.">
+                <NewsCategory title="Общее" text="Поздравляю! Ваши показатели находятся в норме. Рекомендую ознакомиться с подборкой ниже для улучшения средних показателей">
                     
                     <Article navigation={navigation} />
                     
@@ -78,15 +79,5 @@ const Main = ({navigation}) => {
         </ScrollView>
     )
 };  
-
-const styles = StyleSheet.create({
-    container: {
-      backgroundColor: LIGHT_THEME.bgColor,
-      paddingLeft: '8%',
-      paddingRight: '8%',
-      height: '100%',
-      paddingTop: 30
-    }
-});
 
 export default Main;

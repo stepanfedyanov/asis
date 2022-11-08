@@ -9,11 +9,16 @@ export const LIGHT_THEME = {
     lightGray: '#D9D9D9',
     gray: '#8A8A8A',
     darkGray: '#8E8E93',
+    blue: '#007AFF',
     cardBg: '#F2F2F7',
     red: '#FF3B30',
     activity: '#FF3B30',
     steps: '#5856D6',
-    summary: '#FF9003'
+    summary: '#FF9003',
+    body: '#007AFF',
+    nutrition: '#34C759',
+    focus: '#5AC8FA',
+    reminder: '#5AC8FA'
 };
 
 export const DARK_THEME = {

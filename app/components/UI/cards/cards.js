@@ -32,12 +32,19 @@ const Card1 = (props) => {
     }
 
     return (
-        <View style={{width: '100%', marginTop: props.title ? 25 : 5}}>
+        <View onStartShouldSetResponder={() => props.navigation.navigate('data', { 
+            screen: 'data_page', 
+            params: {
+                datatype: props.data.dataType
+                } 
+            })} 
+            style={{width: '100%', marginTop: props.title ? 25 : 5}}>
+                
             {title}
 
             <View style={style[1]}>
                 <CardTitle title={props.data.cardTitle} color={LIGHT_THEME[props.data.dataType]} />
-                <Text style={{...GLOBAL_CSS.footnoteBold, marginBottom: '3%'}}>Средний результат за последнюю неделю: {averageArray(props.data.chart)} очков</Text>
+                <Text style={{...GLOBAL_CSS.footnoteBold, marginBottom: '3%'}}>Средний результат за неделю: {averageArray(props.data.chart)}%</Text>
 
                 <BarChart style={{width: "100%"}} data={props.data.chart} labelType='week' color={LIGHT_THEME[props.data.dataType]}/>
 

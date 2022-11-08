@@ -5,17 +5,19 @@ import { LIGHT_THEME } from "../../../constants/color";
 import { averageArray } from "../../../common/functions";
 import { GLOBAL_CSS } from "../../../constants/styles";
 import { endingWord } from "../../../common/functions";
+import { names } from "../../../constants/names";
 
 const styles = StyleSheet.create({
     topContainer: {
         width: '10%',
-        position: 'relative'
+        position: 'relative',
+        marginRight: 10
     },
     container: {
         width: '100%',
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         alignItems: 'flex-end'
     },
     bar: {
@@ -97,6 +99,7 @@ const BarChart = (props) => {
 };
 
 const HorizontalBarChart = (props) => {
+    const one = props.data[1].value > props.data[0].value ? props.data[1].value : props.data[0].value;
     return (
         <View style={{width: '100%'}}>
             <Text>
@@ -106,8 +109,8 @@ const HorizontalBarChart = (props) => {
                 </Text>
             </Text>
 
-            <View style={{...styles.horizontalBar, width: '100%', backgroundColor: props.color}}>
-                <Text style={{color: '#FFF', ...GLOBAL_CSS.caption1}}>Сегодня</Text>
+            <View style={{...styles.horizontalBar, width: `${props.data[0].value / one * 100}%`, backgroundColor: props.color}}>
+                <Text style={{color: '#FFF', ...GLOBAL_CSS.caption1}}>{names[props.data[0].label]}</Text>
             </View>
             
             <Text style={{marginTop: 10}}>
@@ -117,8 +120,8 @@ const HorizontalBarChart = (props) => {
                 </Text>
             </Text>
 
-            <View style={{...styles.horizontalBar, width: `${props.data[1].value / props.data[0].value * 100}%`, backgroundColor: LIGHT_THEME.lightGray}}>
-                <Text style={{color: LIGHT_THEME.gray, ...GLOBAL_CSS.caption1Regular}}>Обычно</Text>
+            <View style={{...styles.horizontalBar, width: `${props.data[1].value / one * 100}%`, backgroundColor: LIGHT_THEME.lightGray}}>
+                <Text style={{color: LIGHT_THEME.gray, ...GLOBAL_CSS.caption1Regular}}>{names[props.data[0].label]}</Text>
             </View>
 
         </View>

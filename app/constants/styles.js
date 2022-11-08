@@ -1,6 +1,14 @@
 import { LIGHT_THEME } from "./color";
 
 export const GLOBAL_CSS = {
+    screen: {
+        backgroundColor: LIGHT_THEME.bgColor,
+        paddingLeft: '8%',
+        paddingRight: '8%',
+        height: '100%',
+        paddingTop: 100,
+        // paddingBottom: 1000
+    },
     cardStyle: {
         borderRadius: '12px',
         backgroundColor: LIGHT_THEME.cardBg,
@@ -49,7 +57,7 @@ export const GLOBAL_CSS = {
         fontSize: '16px'
     },
     caption1Regular: {
-        fontWeight: '500',
+        fontWeight: '400',
         fontSize: '12px',
     },
     caption2Bold: {

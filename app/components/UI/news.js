@@ -5,7 +5,7 @@ import Subtitle from "./Subtitle";
 
 const Article = (props) => {
     return (
-        <View onStartShouldSetResponder={() => props.navigation.navigate('Браузер', {uri: 'https://fedyanov.agency/'})} style={{marginTop: 10, marginBottom: 10, ...GLOBAL_CSS.articleCard}}>
+        <View onStartShouldSetResponder={() => props.navigation.navigate('browser', {uri: 'https://fedyanov.agency/'})} style={{marginTop: 10, marginBottom: 10, ...GLOBAL_CSS.articleCard}}>
             <Image source={{uri: 'https://fedyanov.agency/img/asis/why-sleep-is-so-important.png'}} style={{width: '100%', height: 150}} />
             <View style={{padding: 20}}>
                 <Text style={{...GLOBAL_CSS.title3Bold}}>Почему сон так важен?</Text>

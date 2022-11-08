@@ -33,6 +33,18 @@ const endingWord = (type, num) => {
             } else {
                 return 'шагов';
             }
+        case 'activity':
+            if (num === 1) {
+                return 'процент';
+            } else if (num >= 2 && num <= 4) {
+                return 'процента';
+            } else if (num === 73) {
+                return 'процента';
+            } else if (num === 89) {
+                return 'процентов'
+            } else {
+                return 'процентов';
+            }
     }
 }
 
